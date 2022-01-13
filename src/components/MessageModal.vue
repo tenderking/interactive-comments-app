@@ -1,6 +1,12 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 const count = ref(0);
+const props = defineProps({
+  openModal: {
+      type: Function,
+      required:true
+    }
+})
 </script>
 <template>
   <main>
@@ -12,7 +18,7 @@ const count = ref(0);
       />
       <h2 class="name">test 1</h2>
       <p class="post-date">1 month ago</p>
-      <div class="reply-btn">
+      <div class="reply-btn" @click="openModal()">
         <img
           src="../assets/images/icon-reply.svg"
           alt="reply icon"
@@ -62,6 +68,9 @@ img{ width:2em}
      
       img{
           width: 1em;
+      }
+      &:hover{
+        cursor: pointer;
       }
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main v-if="isContentShown">
       <img  class="avatar"
         src="../assets/images/avatars/image-amyrobson.png"
         alt="amy" />
@@ -11,7 +11,19 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 const message=ref('')
-const submitMessage= ()=> console.log(message.value)
+const submitMessage= ()=>{
+  props.closeModal()
+  console.log(message.value)}
+const props = defineProps({
+  isContentShown : {
+      type: Boolean
+    },
+    closeModal: {
+      type: Function,
+      required:true
+    }
+})
+
 </script>
 
 
