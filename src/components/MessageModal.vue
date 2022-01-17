@@ -15,12 +15,11 @@ const props = defineProps({
 </script>
 <template>
   <main v-for="comment in props.comments" :key="comment.id">
-
     <div class="user-info">
       <img class="avatar" :src="comment.user.image.png" alt="profile avatar" />
-      <h2 class="name">{{comment.user}}</h2>
+      <h2 class="name">{{comment.user.username}}</h2>
       <p class="post-date">{{comment.createdAt}}</p>
-      <ReplyButton @click="openModal()" />
+      <ReplyButton reply @click="openModal()" />
     </div>
     <div class="post-container">
       <p class="post-text">
@@ -42,7 +41,8 @@ main {
   display: grid;
   grid-template-columns: 15% 1fr;
   grid-template-rows: 1fr 1fr;
-  margin: auto;
+  margin: 2em;
+  box-shadow: 1px 1px 10px #e1e1e1;
   aside {
     grid-row: 1 / span 2;
     grid-column: 1 / span 1;

@@ -36,6 +36,7 @@ main {
   align-items: center;
   gap: 1em;
   padding: 1em;
+    box-shadow: 1px 1px 10px #e1e1e1;
   img {
     width: 2em;
   }
