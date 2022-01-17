@@ -15,6 +15,7 @@ const props = defineProps({
 </script>
 <template>
   <main v-for="comment in props.comments" :key="comment.id">
+
     <div class="user-info">
       <img class="avatar" :src="comment.user.image.png" alt="profile avatar" />
       <h2 class="name">{{comment.user}}</h2>
