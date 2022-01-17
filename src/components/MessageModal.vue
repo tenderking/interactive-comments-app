@@ -37,7 +37,7 @@ const props = defineProps({
 <style lang="scss" scoped>
 main {
   width: 40em;
-  background-color: azure;
+  background-color: $--primary-blue-500;
   display: grid;
   grid-template-columns: 15% 1fr;
   grid-template-rows: 1fr 1fr;
