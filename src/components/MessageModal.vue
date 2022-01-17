@@ -1,36 +1,26 @@
 <script lang="ts" setup>
 import { ref } from "vue";
+import ReplyButton from "./ReplyButton.vue";
 const count = ref(0);
 const props = defineProps({
   openModal: {
-      type: Function,
-      required:true
-    }
-})
+    type: Function,
+    required: true,
+  },
+});
 </script>
 <template>
   <main>
     <div class="user-info">
-      <img
-        class="avatar"
-        src="../assets/images/avatars/image-amyrobson.png"
-        alt="amy"
-      />
+      <img class="avatar" src="../assets/images/avatars/image-amyrobson.png" alt="amy" />
       <h2 class="name">test 1</h2>
       <p class="post-date">1 month ago</p>
-      <div class="reply-btn" @click="openModal()">
-        <img
-          src="../assets/images/icon-reply.svg"
-          alt="reply icon"
-          class="reply-"
-        />
-        <span class="reply-btn-text">Reply</span>
-      </div>
+      <ReplyButton @click="openModal()" />
     </div>
     <div class="post-container">
       <p class="post-text">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quo fugit,
-        maxime sint laudantium labore porro commodi deserunt reiciendis earum.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quo fugit, maxime sint
+        laudantium labore porro commodi deserunt reiciendis earum.
       </p>
     </div>
     <aside>
@@ -61,15 +51,17 @@ main {
     justify-content: flex-start;
     align-items: center;
     gap: 1em;
-width: 100%;
-img{ width:2em}
-    .reply-btn {
-        margin-left:auto;
-     
-      img{
-          width: 1em;
+    width: 100%;
+    img {
+      width: 2em;
+    }
+    .btn-reply {
+      margin-left: auto;
+
+      img {
+        width: 1em;
       }
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
     }
