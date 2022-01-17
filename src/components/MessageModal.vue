@@ -1,32 +1,35 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import ReplyButton from "./ReplyButton.vue";
-const count = ref(0);
+// const count = ref(0);
 const props = defineProps({
   openModal: {
     type: Function,
     required: true,
   },
+  comments:{
+    type: Object,
+    required:true
+  }
 });
 </script>
 <template>
-  <main>
+  <main v-for="comment in props.comments" :key="comment.id">
     <div class="user-info">
-      <img class="avatar" src="../assets/images/avatars/image-amyrobson.png" alt="amy" />
-      <h2 class="name">test 1</h2>
-      <p class="post-date">1 month ago</p>
+      <img class="avatar" :src="comment.user.image.png" alt="profile avatar" />
+      <h2 class="name">{{comment.user}}</h2>
+      <p class="post-date">{{comment.createdAt}}</p>
       <ReplyButton @click="openModal()" />
     </div>
     <div class="post-container">
       <p class="post-text">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id quo fugit, maxime sint
-        laudantium labore porro commodi deserunt reiciendis earum.
+        {{comment.content}}
       </p>
     </div>
     <aside>
-      <button @click="count++">+</button>
-      <div>{{ count }}</div>
-      <button @click="count--">-</button>
+      <button @click="comment.score++">+</button>
+      <div>{{ comment.score}}</div>
+      <button @click="comment.score--">-</button>
     </aside>
   </main>
 </template>

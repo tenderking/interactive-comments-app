@@ -2,13 +2,15 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import { ref } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+
 import MessageModal from "./components/MessageModal.vue";
 import ReplyModal from "./components/ReplyModal.vue";
-  // const modal = ref<InstanceType<typeof ReplyModal>>()
-  // const openModal = () => {
-  //   modal.value?.open()
-  // }
+// import {UserOrCurrentUser, Image, CommentsEntity, RepliesEntity, ChatModels} from './models'
+import ChatData from './data.json'
+
+const currentUser = ref(ChatData.currentUser)
+const comments = ref(ChatData.comments)
+  
   const isContentShown = ref(false)
  const openModal = () => {isContentShown.value = true}
  const closeModal = () => {isContentShown.value = false}
@@ -20,10 +22,10 @@ import ReplyModal from "./components/ReplyModal.vue";
   <main>
     <button @click="isContentShown= !isContentShown">Click Me</button>
    
-<MessageModal :openModal="openModal" />
+<MessageModal :comments="comments" :openModal="openModal" />
   
     
-    <ReplyModal :isContentShown="isContentShown" :closeModal="closeModal"/>
+    <ReplyModal :isContentShown="isContentShown" :currentUser="currentUser" :closeModal="closeModal"/>
   </main>
 </template>
 
