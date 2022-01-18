@@ -12,15 +12,6 @@ import Tag from "./components/atoms/Tag.vue";
 </template>
 
 <style lang="scss">
-/* These are some styles for demonstrations purposes */
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-
-  margin: 0;
-}
-
 .grid {
   display: grid;
   place-content: center;
@@ -28,7 +19,6 @@ import Tag from "./components/atoms/Tag.vue";
 }
 
 .container {
-  max-width: 400px;
   padding: 1rem;
   border: 2px dashed dodgerblue;
 }
