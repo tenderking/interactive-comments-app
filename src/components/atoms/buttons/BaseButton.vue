@@ -8,6 +8,19 @@
   cursor: pointer;
   border-radius: 0.5rem;
 
+  &--normal {
+    padding: 1rem;
+    color: var(--white);
+    background-color: var(--active-color);
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &:hover,
+    &:focus {
+      background-color: var(--hover-color);
+    }
+  }
+
   &--flat {
     background-color: transparent;
     padding: 0.5rem;

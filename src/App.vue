@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import EditButton from "./components/atoms/buttons/flat/EditButton.vue";
-import DeleteButton from "./components/atoms/buttons/flat/DeleteButton.vue";
-import ReplyButton from "./components/atoms/buttons/flat/ReplyButton.vue";
+import PrimaryButton from "./components/atoms/buttons/normal/PrimaryButton.vue";
+import SecondaryButton from "./components/atoms/buttons/normal/SecondaryButton.vue";
+import DangerButton from "./components/atoms/buttons/normal/DangerButton.vue";
 </script>
 
 <template>
   <div class="grid">
     <div class="container">
       <h1>Place the component here</h1>
-      <EditButton />
-      <DeleteButton />
-      <ReplyButton />
+      <PrimaryButton />
+      <SecondaryButton />
+      <DangerButton />
     </div>
   </div>
 </template>
