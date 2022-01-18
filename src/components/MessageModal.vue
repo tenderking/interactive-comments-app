@@ -7,34 +7,36 @@ const props = defineProps({
     type: Function,
     required: true,
   },
-  comments:{
+  comments: {
     type: Object,
-    required:true
-  }
+    required: true,
+  },
 });
 </script>
 <template>
   <main v-for="comment in props.comments" :key="comment.id">
     <div class="user-info">
       <img class="avatar" :src="comment.user.image.png" alt="profile avatar" />
-      <h2 class="name">{{comment.user.username}}</h2>
-      <p class="post-date">{{comment.createdAt}}</p>
+      <h2 class="name">{{ comment.user.username }}</h2>
+      <p class="post-date">{{ comment.createdAt }}</p>
       <ReplyButton reply @click="openModal()" />
     </div>
     <div class="post-container">
       <p class="post-text">
-        {{comment.content}}
+        {{ comment.content }}
       </p>
     </div>
     <aside>
       <button @click="comment.score++">+</button>
-      <div>{{ comment.score}}</div>
+      <div>{{ comment.score }}</div>
       <button @click="comment.score--">-</button>
     </aside>
   </main>
 </template>
 
 <style lang="scss" scoped>
+@import "../assets/roo.scss";
+
 main {
   width: 40em;
   background-color: $--primary-blue-500;
