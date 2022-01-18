@@ -20,6 +20,11 @@ import Tag from "./components/atoms/Tag.vue";
 
 .container {
   padding: 1rem;
+  text-align: center;
   border: 2px dashed dodgerblue;
+
+  * + * {
+    margin-top: 1.5rem;
+  }
 }
 </style>
