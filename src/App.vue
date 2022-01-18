@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import Tag from "./components/atoms/Tag.vue";
+import EditButton from "./components/atoms/buttons/flat/EditButton.vue";
+import DeleteButton from "./components/atoms/buttons/flat/DeleteButton.vue";
+import ReplyButton from "./components/atoms/buttons/flat/ReplyButton.vue";
 </script>
 
 <template>
   <div class="grid">
     <div class="container">
       <h1>Place the component here</h1>
-      <Tag />
+      <EditButton />
+      <DeleteButton />
+      <ReplyButton />
     </div>
   </div>
 </template>
@@ -23,7 +27,7 @@ import Tag from "./components/atoms/Tag.vue";
   text-align: center;
   border: 2px dashed dodgerblue;
 
-  * + * {
+  > * + * {
     margin-top: 1.5rem;
   }
 }
