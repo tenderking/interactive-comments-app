@@ -6,6 +6,9 @@ import TextArea from "./components/atoms/TextArea.vue";
 import UserProfile from "./components/atoms/UserProfile.vue";
 import SendButton from "./components/atoms/buttons/round/SendButton.vue";
 
+import PrimaryButton from "./components/atoms/buttons/normal/PrimaryButton.vue";
+import SecondaryButton from "./components/atoms/buttons/normal/SecondaryButton.vue";
+import DangerButton from "./components/atoms/buttons/normal/DangerButton.vue";
 </script>
 
 <template>
@@ -18,6 +21,9 @@ import SendButton from "./components/atoms/buttons/round/SendButton.vue";
       <TextArea />
       <UserProfile  />
      <SendButton />
+      <PrimaryButton />
+      <SecondaryButton />
+      <DangerButton />
     </div>
   </div>
 </template>

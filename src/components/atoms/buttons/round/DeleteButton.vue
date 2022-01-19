@@ -7,6 +7,6 @@ import BaseRoundedButton from '../BaseRoundedButton.vue';
 <style lang="scss">
 .btn--round {
   --active-color: var(--secondary-500);
-  --hover-color: var(--seondary-300);
+  --hover-color: var(--secondary-300);
 }
 </style>
