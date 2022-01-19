@@ -2,6 +2,10 @@
 import EditButton from "./components/atoms/buttons/flat/EditButton.vue";
 import DeleteButton from "./components/atoms/buttons/flat/DeleteButton.vue";
 import ReplyButton from "./components/atoms/buttons/flat/ReplyButton.vue";
+import TextArea from "./components/atoms/TextArea.vue";
+import UserProfile from "./components/atoms/UserProfile.vue";
+import SendButton from "./components/atoms/buttons/round/SendButton.vue";
+
 </script>
 
 <template>
@@ -11,6 +15,9 @@ import ReplyButton from "./components/atoms/buttons/flat/ReplyButton.vue";
       <EditButton />
       <DeleteButton />
       <ReplyButton />
+      <TextArea />
+      <UserProfile  />
+     <SendButton />
     </div>
   </div>
 </template>

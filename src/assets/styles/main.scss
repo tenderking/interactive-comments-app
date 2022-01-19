@@ -1,15 +1,28 @@
 // Variables
+
 :root {
-  --primary-blue-500: hsl(238, 40%, 52%);
-  --primary-blue-300: hsl(239, 57%, 85%);
-  --primary-red-500: hsl(358, 79%, 66%);
-  --primary-red-300: hsl(357, 100%, 86%);
+  /* color */
+  --primary-500: hsl(238, 40%, 52%);
+  --primary-300: hsl(239, 57%, 85%);
+  --secondary-500: hsl(358, 79%, 66%);
+  --secondary-300: hsl(357, 100%, 86%);
 
   --neutral-700: hsl(212, 24%, 26%);
   --neutral-600: hsl(211, 10%, 45%);
   --neutral-200: hsl(223, 19%, 93%);
   --neutral-100: hsl(228, 33%, 97%);
   --white: hsl(0, 0%, 100%);
+
+  /* fonts */
+  --txt-modal-title--tablet: 1.5rem;
+  --txt-modal-title--mobile: 1.25rem;
+  --txt-btn--flat: 1rem;
+  --txt-btn--default: 2rem;
+  --txt-body: 1rem;
+  --txt-tag: 0.87rem;
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-700: 700;
 }
 
 // Resets
@@ -24,9 +37,10 @@
 // Typography
 body {
   font-family: "Rubik", sans-serif;
-  font-weight: 400;
+  font-weight: 400 500 700;
 }
 
-button, textarea {
+button,
+textarea {
   font: inherit;
 }

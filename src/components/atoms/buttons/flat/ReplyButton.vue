@@ -20,7 +20,7 @@ import BaseButton from "../BaseButton.vue";
 
 <style lang="scss" scoped>
 .btn--flat {
-  --active-color: var(--primary-blue-500);
-  --hover-color: var(--primary-blue-300);
+  --active-color: var(--primary-500);
+  --hover-color: var(--primary-300);
 }
 </style>
