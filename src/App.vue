@@ -8,6 +8,7 @@
 	import PrimaryButton from "./components/atoms/buttons/normal/PrimaryButton.vue";
 	import SecondaryButton from "./components/atoms/buttons/normal/SecondaryButton.vue";
 	import DangerButton from "./components/atoms/buttons/normal/DangerButton.vue";
+	import LikeButton from "./components/atoms/buttons/LikeButton.vue";
 </script>
 
 <template>
@@ -23,6 +24,7 @@
 			<PrimaryButton />
 			<SecondaryButton />
 			<DangerButton />
+			<LikeButton />
 		</div>
 	</div>
 </template>
