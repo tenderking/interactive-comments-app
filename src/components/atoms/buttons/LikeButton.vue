@@ -46,7 +46,7 @@
 			color: var(--primary-500);
 		}
 	}
-	@media screen and (min-width: 600px/*var(--break)*/) {
+	@media (min-width: 35rem/*var(--break)*/) {
 		.like-btn {
 			display: flex;
 			flex-direction: column;
