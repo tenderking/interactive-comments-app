@@ -4,6 +4,7 @@
 	import ReplyButton from "./components/atoms/buttons/flat/ReplyButton.vue";
 	import TextArea from "./components/atoms/TextArea.vue";
 	import UserProfile from "./components/atoms/UserProfile.vue";
+	import SendButton from "./components/atoms/buttons/round/SendButton.vue";
 
 	import PrimaryButton from "./components/atoms/buttons/normal/PrimaryButton.vue";
 	import SecondaryButton from "./components/atoms/buttons/normal/SecondaryButton.vue";
@@ -25,6 +26,7 @@
 			<SecondaryButton />
 			<DangerButton />
 			<LikeButton />
+
 		</div>
 	</div>
 </template>
