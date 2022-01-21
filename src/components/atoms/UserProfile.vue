@@ -1,25 +1,27 @@
 <script setup lang="ts">
-	import { ref, computed } from "vue";
-	const nameOfUser = ref(<string>"juliusom");
-	const imgUrl = "/images/avatars/image-amyrobson.png";
-	const currentUser = "juliusomo";
-	const showUserName = ref(true);
-	const showUserPhoto = ref(true);
+	/* Before pinia*/
+	// import { ref, computed } from "vue";
+	// const nameOfUser = ref(<string>"juliusom");
+	// const imgUrl = "/images/avatars/image-amyrobson.png";
+	// const currentUser = "juliusomo";
+	// const showUserName = ref(true);
+	// const showUserPhoto = ref(true);
+	// const checkUser = computed(() => {
+	// 	if (currentUser === nameOfUser.value) return true;
+	// });
 
-	const checkUser = computed(() => {
-		if (currentUser === nameOfUser.value) return true;
+	import { useUser } from "../../stores/store";
+
+	const store = useUser();
+	const props = defineProps({
+		isShown: Boolean,
 	});
 </script>
 <template>
-	<div
-		class="invisible-container"
-		:showNameTag="showUserName"
-		:showAvatar="showUserPhoto"
-		:getName="nameOfUser"
-	>
-		<img :src="imgUrl" v-show="showUserPhoto" alt="user avatar" />
-		<p class="user-name" v-show="showUserName">{{ nameOfUser }}</p>
-		<p class="user-you" v-show="checkUser">you</p>
+	<div class="invisible-container">
+		<img :src="store.imgUrl" v-show="store.showUserPhoto" alt="user avatar" />
+		<p class="user-name" v-show="isShown">{{ store.nameOfUser }}</p>
+		<p class="user-you" v-show="store.checkUser">you</p>
 	</div>
 </template>
 <style lang="scss" scoped>

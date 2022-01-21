@@ -1,18 +1,17 @@
 <template>
 	<div class="btn-container">
 		<div class="like-btn btn__plus">
-			<p @click="likes++" class="btn__text">+</p>
+			<p @click="store.increment()" class="btn__text">+</p>
 
-			<p class="text">{{ likes }}</p>
+			<p class="text">{{ store.likes }}</p>
 
-			<p @click="likes--" class="btn__text">-</p>
+			<p @click="store.decrease()" class="btn__text">-</p>
 		</div>
 	</div>
 </template>
 <script setup lang="ts" scoped>
-	import { ref } from "vue";
-
-	const likes = ref(0);
+	import { useUser } from "../../../stores/store";
+	const store = useUser();
 </script>
 <style lang="scss">
 	.like-btn {
