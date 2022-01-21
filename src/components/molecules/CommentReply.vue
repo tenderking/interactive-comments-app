@@ -17,6 +17,9 @@
 		display: grid;
 		grid-template-rows: 2fr 1fr;
 		grid-template-columns: 1fr 1fr;
+		background-color: var(--white);
+		padding: 1.5rem;
+		border-radius: 0.5rem;
 		.text-area {
 			grid-column: 1 / span 2;
 		}
