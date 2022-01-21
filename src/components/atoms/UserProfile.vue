@@ -1,10 +1,11 @@
 <script setup lang="ts">
 	import { ref, computed } from "vue";
-	const name = ref(<string>"juliusomo");
+	const name = ref(<string>"juliusomod");
 	const imgUrl = "/images/avatars/image-amyrobson.png";
 	const currentUser = "juliusomo";
 	const showUserName = ref(true);
 	const showUserPhoto = ref(true);
+
 	const checkUser = computed(() => {
 		if (currentUser === name.value) return true;
 	});

@@ -5,8 +5,10 @@
 
 <template>
 	<div class="grid">
-		<CommentModal />
-		<CommentReply />
+		<div class="container">
+			<!-- <CommentModal /> -->
+			<CommentReply />
+		</div>
 	</div>
 </template>
 
