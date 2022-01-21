@@ -1,11 +1,24 @@
 <script setup lang="ts">
-import CommentView from './components/molecules/CommentView.vue';
+import CommentView from "./components/molecules/CommentView.vue";
+import { useUser } from "./stores/store";
+
+const store = useUser();
 </script>
 
 <template>
   <div class="grid">
     <div class="container">
-      <CommentView />
+      <template v-for="comment in store.comments.comments" :key="comment.id">
+        <CommentView :comment="comment" />
+
+        <div
+          style="margin-left: 5rem"
+          v-for="repliedComment in comment.replies"
+          :key="repliedComment.id"
+        >
+          <CommentView :comment="repliedComment" />
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -16,6 +29,7 @@ import CommentView from './components/molecules/CommentView.vue';
   place-content: center;
   min-height: 100vh;
   background-color: var(--neutral-100);
+  padding-block: 5rem;
 }
 
 .container {
@@ -28,7 +42,7 @@ import CommentView from './components/molecules/CommentView.vue';
   }
 
   > * + * {
-    margin-top: 1.5rem;
+    margin-top: 20px;
   }
 }
 </style>

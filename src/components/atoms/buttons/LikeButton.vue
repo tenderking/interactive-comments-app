@@ -1,17 +1,22 @@
 <template>
   <div class="btn-container">
     <div class="like-btn btn__plus">
-      <p @click="store.increment()" class="btn__text">+</p>
+      <p @click="upvote(id)" class="btn__text">+</p>
 
-      <p class="text">{{ store.likes }}</p>
+      <p class="text">{{ score }}</p>
 
-      <p @click="store.decrease()" class="btn__text">-</p>
+      <p @click="downvote(id)" class="btn__text">-</p>
     </div>
   </div>
 </template>
 <script setup lang="ts" scoped>
-import { useUser } from '../../../stores/store';
-const store = useUser();
+import { useUser } from "../../../stores/store";
+const { upvote, downvote } = useUser();
+
+defineProps({
+  score: { type: Number, required: true },
+  id: { type: Number, required: true },
+});
 </script>
 <style lang="scss">
 .like-btn {
