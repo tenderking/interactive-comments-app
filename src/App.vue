@@ -1,32 +1,34 @@
 <script setup lang="ts">
-	import CommentModal from "./components/molecules/CommentModal.vue";
-	import CommentReply from "./components/molecules/CommentReply.vue";
+import CommentView from './components/molecules/CommentView.vue';
 </script>
 
 <template>
-	<div class="grid">
-		<div class="container">
-			<!-- <CommentModal /> -->
-			<CommentReply />
-		</div>
-	</div>
+  <div class="grid">
+    <div class="container">
+      <CommentView />
+    </div>
+  </div>
 </template>
 
 <style lang="scss">
-	.grid {
-		display: grid;
-		place-content: center;
-		min-height: 100vh;
-		background-color: var(--neutral-100);
-	}
+.grid {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background-color: var(--neutral-100);
+}
 
-	.container {
-		padding: 1rem;
-		text-align: center;
-		border: 2px dashed dodgerblue;
+.container {
+  padding: 1rem;
+  border: 2px dashed dodgerblue;
+  max-width: 30rem;
 
-		> * + * {
-			margin-top: 1.5rem;
-		}
-	}
+  @media (min-width: 52rem) {
+    max-width: 46rem;
+  }
+
+  > * + * {
+    margin-top: 1.5rem;
+  }
+}
 </style>
