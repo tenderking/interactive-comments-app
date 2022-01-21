@@ -1,13 +1,13 @@
 <script setup lang="ts">
 	import { ref, computed } from "vue";
-	const name = ref(<string>"juliusomod");
+	const nameOfUser = ref(<string>"juliusom");
 	const imgUrl = "/images/avatars/image-amyrobson.png";
 	const currentUser = "juliusomo";
 	const showUserName = ref(true);
 	const showUserPhoto = ref(true);
 
 	const checkUser = computed(() => {
-		if (currentUser === name.value) return true;
+		if (currentUser === nameOfUser.value) return true;
 	});
 </script>
 <template>
@@ -15,10 +15,10 @@
 		class="invisible-container"
 		:showNameTag="showUserName"
 		:showAvatar="showUserPhoto"
-		:name="name"
+		:getName="nameOfUser"
 	>
 		<img :src="imgUrl" v-show="showUserPhoto" alt="user avatar" />
-		<p class="user-name" v-show="showUserName">{{ name }}</p>
+		<p class="user-name" v-show="showUserName">{{ nameOfUser }}</p>
 		<p class="user-you" v-show="checkUser">you</p>
 	</div>
 </template>
