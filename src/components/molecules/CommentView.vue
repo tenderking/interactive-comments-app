@@ -8,7 +8,7 @@ import EditButton from '../atoms/buttons/flat/EditButton.vue';
 <template>
   <div class="comment">
     <div class="comment__user-infos">
-      <UserProfile />
+      <UserProfile :isShown="true" />
       <p class="timestamp">1 day ago</p>
     </div>
     <div class="comment__content">
