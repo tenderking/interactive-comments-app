@@ -1,10 +1,8 @@
 <template>
-	<div class="container">
-		<div class="comment-container">
-			<TextArea class="text-area" />
-			<UserProfile class="user-profile" ref="showUserName" />
-			<PrimaryButton class="btn" />
-		</div>
+	<div class="comment-container">
+		<TextArea class="text-area" />
+		<UserProfile class="user-profile" ref="showUserName" />
+		<PrimaryButton class="btn" />
 	</div>
 </template>
 <script setup lang="ts">

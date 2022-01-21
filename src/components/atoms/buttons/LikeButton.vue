@@ -1,13 +1,11 @@
 <template>
-	<div class="container">
-		<div class="btn-container">
-			<div class="like-btn btn__plus">
-				<p @click="likes++" class="btn__text">+</p>
+	<div class="btn-container">
+		<div class="like-btn btn__plus">
+			<p @click="likes++" class="btn__text">+</p>
 
-				<p class="text">{{ likes }}</p>
+			<p class="text">{{ likes }}</p>
 
-				<p @click="likes--" class="btn__text">-</p>
-			</div>
+			<p @click="likes--" class="btn__text">-</p>
 		</div>
 	</div>
 </template>

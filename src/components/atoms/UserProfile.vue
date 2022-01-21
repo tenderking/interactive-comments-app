@@ -11,7 +11,7 @@
 </script>
 <template>
 	<div
-		class="container"
+		class="invisible-container"
 		:showNameTag="showUserName"
 		:showAvatar="showUserPhoto"
 		:name="name"
@@ -22,7 +22,7 @@
 	</div>
 </template>
 <style lang="scss" scoped>
-	.container {
+	.invisible-container {
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
