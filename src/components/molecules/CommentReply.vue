@@ -1,11 +1,7 @@
 <template>
 	<div class="comment-container">
 		<TextArea class="text-area" />
-		<UserProfile
-			showNameTag="someValue"
-			getName="nameOfUser"
-			class="user-profile"
-		/>
+		<UserProfile :isShown="false" class="user-profile" />
 		<PrimaryButton class="btn" />
 	</div>
 </template>
@@ -13,6 +9,8 @@
 	import PrimaryButton from "../atoms/buttons/normal/PrimaryButton.vue";
 	import UserProfile from "../atoms/UserProfile.vue";
 	import TextArea from "../atoms/TextArea.vue";
+	import { useUser } from "../../stores/store";
+	const store = useUser();
 </script>
 <style lang="scss">
 	.comment-container {
