@@ -7,6 +7,7 @@ export const useUser = defineStore({
 	id: "user",
 
 	state: () => ({
+
 		showUserPhoto: true,
 		nameOfUser: "juliusom",
 		currentUser: "juliosomo",
@@ -18,6 +19,7 @@ export const useUser = defineStore({
 		checkUser: (state) => {
 			if (state.currentUser === state.nameOfUser) return true;
 		},
+
 		// getData: (state) => {
 		//   const replies: (object | void)[] = state.comments.comments.replies;
 		//   if (replies.length > 0) state.data.push(replies);
@@ -46,6 +48,8 @@ export const useUser = defineStore({
 		// downvote() {
 		// 	this.likes--;
 		// },
+
+
 	},
 });
 if (import.meta.hot) {
