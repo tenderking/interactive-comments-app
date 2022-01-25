@@ -7,6 +7,7 @@
 	import ReplyButton from "../atoms/buttons/flat/ReplyButton.vue";
 	import CommentReply from "./CommentReply.vue";
 	import { useUser } from "../../stores/store";
+	import TextArea from "../atoms/TextArea.vue";
 
 	const store = useUser();
 	const showReply = ref(false);
@@ -15,6 +16,14 @@
 	});
 	const isCurrentUser = () =>
 		store.currentUser.username === props.comment.user.username;
+	const edit = ref(false);
+	const editComment = () => {
+		if (edit.value == true) {
+			edit.value = !edit.value;
+			return console.log("you have submitted your edits");
+		}
+		edit.value = !edit.value;
+	};
 </script>
 
 <template>
@@ -25,7 +34,8 @@
 				<p class="timestamp">1 day ago</p>
 			</div>
 			<div class="comment__content">
-				<p>
+				<TextArea v-if="edit" :value="comment.content"></TextArea>
+				<p v-else>
 					{{ comment.content }}
 				</p>
 			</div>
@@ -35,7 +45,7 @@
 			<div class="comment__actions">
 				<template v-if="isCurrentUser()">
 					<DeleteButton />
-					<EditButton />
+					<EditButton @click="editComment" />
 				</template>
 				<ReplyButton @click="showReply = !showReply" v-else />
 			</div>
