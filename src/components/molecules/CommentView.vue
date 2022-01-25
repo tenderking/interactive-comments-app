@@ -8,30 +8,32 @@
 	import CommentReply from "./CommentReply.vue";
 	import { useUser } from "../../stores/store";
 	import TextArea from "../atoms/TextArea.vue";
+	import PrimaryButton from "../atoms/buttons/normal/PrimaryButton.vue";
 
 	const store = useUser();
 	const showReply = ref(false);
+	const toggleShowReply = () => (showReply.value = !showReply.value);
 	const props = defineProps({
 		comment: { type: Object, required: true },
 	});
 	const isCurrentUser = () =>
 		store.currentUser.username === props.comment.user.username;
 
-  const edit = ref(false);
-	const editComment = () => {
+	const edit = ref(false);
+	const updateComment = () => {
 		if (edit.value == true) {
 			edit.value = !edit.value;
 			return console.log("you have submitted your edits");
 		}
 		edit.value = !edit.value;
 	};
-  const showModal = () => {
-		store.handleModal(true)
-		store.$patch({ idToDelete: props.comment.id})
+	const showModal = () => {
+		store.handleModal(true);
+		store.$patch({ idToDelete: props.comment.id });
 
-		if(props.comment.replies) store.$patch({ isRepliedComment: false})
-		else store.$patch({ isRepliedComment: true})
-	}
+		if (props.comment.replies) store.$patch({ isRepliedComment: false });
+		else store.$patch({ isRepliedComment: true });
+	};
 </script>
 
 <template>
@@ -51,11 +53,14 @@
 				<LikeButton :score="comment.score" :id="comment.id" />
 			</div>
 			<div class="comment__actions">
-				<template v-if="isCurrentUser()">
-          <DeleteButton @click="showModal"  />
-					<EditButton @click="editComment" />
+				<template v-if="isCurrentUser() && !edit">
+					<DeleteButton @click="showModal" />
+					<EditButton @click="updateComment" />
 				</template>
-				<ReplyButton @click="showReply = !showReply" v-else />
+				<template v-else-if="edit">
+					<PrimaryButton @click="updateComment">Update</PrimaryButton>
+				</template>
+				<ReplyButton @click="toggleShowReply()" v-else />
 			</div>
 		</div>
 		<CommentReply v-if="showReply" :user="comment.user" />
