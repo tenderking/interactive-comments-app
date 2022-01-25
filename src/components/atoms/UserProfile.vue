@@ -15,13 +15,22 @@
 	const store = useUser();
 	const props = defineProps({
 		isShown: Boolean,
+		user: {
+			type: Object,
+			required: true,
+		},
 	});
+	const isCurrentUser = () =>
+		store.currentUser.username === props.user.username;
 </script>
 <template>
 	<div class="invisible-container">
-		<img :src="store.imgUrl" v-show="store.showUserPhoto" alt="user avatar" />
-		<p class="user-name" v-show="isShown">{{ store.nameOfUser }}</p>
-		<p class="user-you" v-show="store.checkUser">you</p>
+		<img :src="user.image.png" alt="user avatar" />
+		<template v-if="isShown">
+			<p class="user-name">{{ user.username }}</p>
+
+			<p class="user-you" v-show="isCurrentUser()">you</p>
+		</template>
 	</div>
 </template>
 <style lang="scss" scoped>
