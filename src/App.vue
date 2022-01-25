@@ -1,6 +1,7 @@
 <script setup lang="ts">
 	import CommentView from "./components/molecules/CommentView.vue";
 	import { useUser } from "./stores/store";
+import CommentModal from "./components/molecules/CommentModal.vue";
 
 	const store = useUser();
 </script>
@@ -21,6 +22,7 @@
 			</template>
 		</div>
 	</div>
+	<CommentModal v-if="store.showModal" />
 </template>
 
 <style lang="scss">

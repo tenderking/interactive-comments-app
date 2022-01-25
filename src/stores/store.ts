@@ -19,11 +19,12 @@ export const useUser = defineStore({
 	id: "user",
 
 	state: () => ({
-		showUserPhoto: true,
-		nameOfUser: "someUser",
+		// showUserPhoto: true,
+		// nameOfUser: "someUser",
+		// imgUrl: "/images/avatars/image-amyrobson.png",
 		currentUser: chatData.currentUser,
-		imgUrl: "/images/avatars/image-amyrobson.png",
 		comments: chatData.comments,
+		showModal: false,
 	}),
 	getters: {
 		// getData: (state) => {
