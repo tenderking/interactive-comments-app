@@ -1,6 +1,6 @@
 <template>
 	<div class="comment-container">
-		<TextArea class="text-area" />
+		<TextAreaAtom class="text-area" />
 		<UserProfile
 			:isShown="false"
 			:user="store.currentUser"
@@ -12,7 +12,7 @@
 <script setup lang="ts">
 	import PrimaryButton from "../atoms/buttons/normal/PrimaryButton.vue";
 	import UserProfile from "../atoms/UserProfile.vue";
-	import TextArea from "../atoms/TextArea.vue";
+	import TextAreaAtom from "../atoms/TextAreaAtom.vue";
 	import { useUser } from "../../stores/store";
 	const store = useUser();
 </script>

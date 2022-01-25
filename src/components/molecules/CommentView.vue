@@ -7,8 +7,9 @@
 	import ReplyButton from "../atoms/buttons/flat/ReplyButton.vue";
 	import CommentReply from "./CommentReply.vue";
 	import { useUser } from "../../stores/store";
-	import TextArea from "../atoms/TextArea.vue";
+
 	import PrimaryButton from "../atoms/buttons/normal/PrimaryButton.vue";
+	import TextAreaAtom from "../atoms/TextAreaAtom.vue";
 
 	const store = useUser();
 	const showReply = ref(false);
@@ -23,7 +24,6 @@
 	const updateComment = () => {
 		if (edit.value == true) {
 			edit.value = !edit.value;
-			return console.log("you have submitted your edits");
 		}
 		edit.value = !edit.value;
 	};
@@ -44,7 +44,7 @@
 				<p class="timestamp">1 day ago</p>
 			</div>
 			<div class="comment__content">
-				<TextArea v-if="edit" :value="comment.content"></TextArea>
+				<TextAreaAtom v-if="edit" v-model:content="comment.content" />
 				<p v-else>
 					{{ comment.content }}
 				</p>
