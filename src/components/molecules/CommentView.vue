@@ -16,7 +16,8 @@
 	});
 	const isCurrentUser = () =>
 		store.currentUser.username === props.comment.user.username;
-	const edit = ref(false);
+
+  const edit = ref(false);
 	const editComment = () => {
 		if (edit.value == true) {
 			edit.value = !edit.value;
@@ -24,6 +25,13 @@
 		}
 		edit.value = !edit.value;
 	};
+  const showModal = () => {
+		store.handleModal(true)
+		store.$patch({ idToDelete: props.comment.id})
+
+		if(props.comment.replies) store.$patch({ isRepliedComment: false})
+		else store.$patch({ isRepliedComment: true})
+	}
 </script>
 
 <template>
@@ -44,7 +52,7 @@
 			</div>
 			<div class="comment__actions">
 				<template v-if="isCurrentUser()">
-					<DeleteButton />
+          <DeleteButton @click="showModal"  />
 					<EditButton @click="editComment" />
 				</template>
 				<ReplyButton @click="showReply = !showReply" v-else />
