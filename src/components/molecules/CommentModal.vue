@@ -1,14 +1,24 @@
 <script setup lang="ts">
 import { onBeforeMount, onBeforeUnmount } from "vue";
+import { useUser } from "../../stores/store";
 import DangerButton from "../atoms/buttons/normal/DangerButton.vue";
 import SecondaryButton from "../atoms/buttons/normal/SecondaryButton.vue";
 
 onBeforeMount(() => document.body.style.overflow = "hidden")
 onBeforeUnmount(() => document.body.style.overflow = "auto")
+
+const store = useUser()
+
+const hideModal = () => {
+  if(store.idToDelete) store.deleteComment(store.idToDelete)
+  
+  store.handleModal(false)
+  // store.$patch({ isRepliedComment: null})
+}
 </script>
 
 <template>
-  <div class="modal-container">
+  <div class="modal-container" @click.self="store.handleModal(false)">
     <section class="modal">
       <h2 class="modal__title">Delete comment</h2>
       <p class="modal__content">
@@ -16,8 +26,8 @@ onBeforeUnmount(() => document.body.style.overflow = "auto")
         comment and can’t be undone
       </p>
       <aside class="modal__actions">
-        <SecondaryButton />
-        <DangerButton />
+        <SecondaryButton @click="store.handleModal(false)" />
+        <DangerButton @click="hideModal()" />
       </aside>
     </section>
   </div>

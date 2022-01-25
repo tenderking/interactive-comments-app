@@ -25,6 +25,8 @@ export const useUser = defineStore({
 		currentUser: chatData.currentUser,
 		comments: chatData.comments,
 		showModal: false,
+		idToDelete: null,
+		isRepliedComment: false
 	}),
 	getters: {
 		// getData: (state) => {
@@ -33,6 +35,24 @@ export const useUser = defineStore({
 		// },
 	},
 	actions: {
+		handleModal(show: boolean) {
+			this.$patch({showModal: show})
+
+			// Reset the idToDelete state when the modal is closed
+			if (!show) this.$patch({ idToDelete: null})
+		},
+		deleteComment(id: number) {
+			this.$patch((state) => {
+				if (!this.isRepliedComment) {
+					state.comments = state.comments.filter(comment => comment.id !== id)
+				} else {
+					for (let index = 0; index < this.comments.length; index++) {
+						state.comments[index].replies =
+							state.comments[index].replies.filter(comment => comment.id !== id)
+					}
+				}
+			})
+		}
 		// upvote(id: number) {
 		//   const comment = this.findComment(id) || this.findReply(id);
 		//   if (comment) comment.score++;
