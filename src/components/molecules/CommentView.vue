@@ -5,7 +5,7 @@
 	import DeleteButton from "../atoms/buttons/flat/DeleteButton.vue";
 	import EditButton from "../atoms/buttons/flat/EditButton.vue";
 	import ReplyButton from "../atoms/buttons/flat/ReplyButton.vue";
-	import CommentReply from "./CommentReply.vue";
+	import CommentNew from "./CommentNew.vue";
 	import { useUser } from "../../stores/store";
 
 	import PrimaryButton from "../atoms/buttons/normal/PrimaryButton.vue";
@@ -24,6 +24,7 @@
 	const updateComment = () => {
 		if (edit.value == true) {
 			edit.value = !edit.value;
+			return;
 		}
 		edit.value = !edit.value;
 	};
@@ -63,7 +64,12 @@
 				<ReplyButton @click="toggleShowReply()" v-else />
 			</div>
 		</div>
-		<CommentReply v-if="showReply" :user="comment.user" />
+		<CommentNew
+			v-if="showReply"
+			:commentId="comment.id"
+			:replyingTo="comment.user.username"
+			:isReply="true"
+		/>
 	</div>
 </template>
 

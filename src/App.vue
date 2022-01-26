@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import CommentView from "./components/molecules/CommentView.vue";
-import { useUser } from "./stores/store";
-import CommentModal from "./components/molecules/CommentModal.vue";
+	import CommentView from "./components/molecules/CommentView.vue";
+	import { useUser } from "./stores/store";
+	import CommentModal from "./components/molecules/CommentModal.vue";
+	import CommentNew from "./components/molecules/CommentNew.vue";
 
-const store = useUser();
+	const store = useUser();
 </script>
 
 <template>
@@ -20,8 +21,9 @@ const store = useUser();
 					<CommentView :comment="repliedComment" />
 				</div>
 			</template>
+			<CommentNew />
 		</div>
-	
+
 		<CommentModal v-if="store.showModal" />
 	</div>
 </template>
