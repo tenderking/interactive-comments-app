@@ -12,8 +12,7 @@
 	import TextAreaAtom from "../atoms/TextAreaAtom.vue";
 
 	const store = useUser();
-	const showReply = ref(false);
-	const toggleShowReply = () => (showReply.value = !showReply.value);
+
 	const props = defineProps({
 		comment: { type: Object, required: true },
 	});
@@ -27,6 +26,9 @@
 			return;
 		}
 		edit.value = !edit.value;
+	};
+	const toggleShowReply = () => {
+		store.showReply = true;
 	};
 	const showModal = () => {
 		store.handleModal(true);
@@ -61,14 +63,15 @@
 				<template v-else-if="edit">
 					<PrimaryButton @click="updateComment">Update</PrimaryButton>
 				</template>
-				<ReplyButton @click="toggleShowReply()" v-else />
+				<ReplyButton @click="toggleShowReply" v-else />
 			</div>
 		</div>
 		<CommentNew
-			v-if="showReply"
+			v-if="store.showReply"
 			:commentId="comment.id"
 			:replyingTo="comment.user.username"
 			:isReply="true"
+			key="22"
 		/>
 	</div>
 </template>

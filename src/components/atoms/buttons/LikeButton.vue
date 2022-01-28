@@ -31,7 +31,7 @@
 
 		p {
 			padding: 5px 10px;
-			font-size: var(txt-btn--default);
+			font-size: 1em; /*var(txt-btn--default); */
 			font-weight: var(--weight-500);
 			color: var(--primary-300);
 			transition: color 0.5s;
