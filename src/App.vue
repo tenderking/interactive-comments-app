@@ -39,7 +39,7 @@
 
 	.container {
 		padding: 1rem;
-		border: 2px dashed dodgerblue;
+		
 		max-width: 30rem;
 
 		@media (min-width: 52rem) {
