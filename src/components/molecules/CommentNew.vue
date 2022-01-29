@@ -17,29 +17,65 @@
 	import TextAreaAtom from "../atoms/TextAreaAtom.vue";
 	import { useUser } from "../../stores/store";
 	import { ref } from "vue";
+
+	/* access store */
 	const store = useUser();
+
+	/* Props */
 	const props = defineProps({
 		replyingTo: { type: String },
 		isReply: { type: Boolean, default: false },
 		commentId: { type: Number },
 		index: { type: Number },
 		showReply: { type: Boolean },
+		closeReply: { type: Function },
 	});
+
+	/* Sending Message Functionality */
 	const newContent = ref("");
+
 	const newMessage = () => {
-		const comment = {
-			id: 4,
+		const newComment = {
+			id: 7, //store.gotNewId(),
 			content: newContent.value,
 			createdAt: "Just now",
 			score: 0,
 			replyingTo: props.replyingTo!,
 			user: store.currentUser,
+			replies: [],
 		};
-		if (props.isReply) {
-			const result = store.comments.find((el) => el.id === props.commentId);
-			if (result) result.replies.push(comment);
+
+		const newReply = {
+			id: 8, //store.gotNewId(),
+			content: newContent.value,
+			createdAt: "Just now",
+			score: 0,
+			replyingTo: props.replyingTo!,
+			user: store.currentUser,
+			replies: [],
+		};
+
+		if (newContent.value) {
+			if (!props.isReply) store.comments.push(newComment);
+
+			if (props.isReply) {
+				console.log(props.commentId);
+				const result = store.comments.find((el) => el.id === props.commentId);
+				if (result) {
+					return result.replies.push(newReply);
+				}
+			}
+			store.showReply = false;
+			store.$reset;
 		}
+
+		store.showReply = false;
+		store.$reset;
 	};
+
+	function closeReply() {
+		throw new Error("Function not implemented.");
+	}
 </script>
 <style lang="scss">
 	.comment-container {
@@ -49,9 +85,11 @@
 		background-color: var(--white);
 		padding: 1.5rem;
 		border-radius: 0.5rem;
+
 		.text-area {
 			grid-column: 1 / span 2;
 		}
+
 		.btn {
 			width: 105px;
 			margin-left: auto;
@@ -70,11 +108,13 @@
 				grid-column: 1 / span 1;
 				grid-row: 1 / span 1;
 			}
+
 			.text-area {
 				grid-column: 2 / span 1;
 				grid-row: 1 / span 2;
 				width: 100%;
 			}
+
 			.btn {
 				grid-column: 3 / span 1;
 				grid-row: 1 / span 1;
