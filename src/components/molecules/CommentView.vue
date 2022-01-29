@@ -12,6 +12,7 @@
 	import TextAreaAtom from "../atoms/TextAreaAtom.vue";
 
 	const store = useUser();
+	const showReply= ref(false)
 
 	const props = defineProps({
 		comment: { type: Object, required: true },
@@ -27,9 +28,10 @@
 		}
 		edit.value = !edit.value;
 	};
-	const toggleShowReply = () => {
-		store.showReply = true;
-	};
+	const toggleShowReply = () => showReply.value = !showReply.value;
+	
+	const closeReply =()=>showReply.value=false;
+		
 	const showModal = () => {
 		store.handleModal(true);
 		store.$patch({ idToDelete: props.comment.id });
@@ -67,11 +69,13 @@
 			</div>
 		</div>
 		<CommentNew
-			v-if="store.showReply"
+			v-if="showReply"
 			:commentId="comment.id"
 			:replyingTo="comment.user.username"
 			:isReply="true"
-			key="22"
+			:closeReply="closeReply"
+			
+			
 		/>
 	</div>
 </template>
