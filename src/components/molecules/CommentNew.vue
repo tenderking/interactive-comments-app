@@ -29,7 +29,7 @@ const props = defineProps({
   replyingTo: { type: String },
   isReply: { type: Boolean, default: false },
   commentId: { type: Number },
-  closeReply: { type: Function, required: true },
+  closeReply: { type: Function},
 });
 
 /** Sending Message Functionality */
@@ -37,7 +37,7 @@ const newContent = ref("");
 
 const newMessage = () => {
   const newComment = {
-    id: 7, //store.gotNewId(),
+    id: store.getNewId(),
     content: newContent.value,
     createdAt: "Just now",
     score: 0,
@@ -47,13 +47,13 @@ const newMessage = () => {
   };
 
   const newReply = {
-    id: 8, //store.gotNewId(),
+    id: store.getNewId(),
     content: newContent.value,
     createdAt: "Just now",
     score: 0,
     replyingTo: props.replyingTo!,
     user: store.currentUser,
-    replies: [],
+   
   };
 
   if (newContent.value) {
@@ -61,9 +61,15 @@ const newMessage = () => {
 
     if (props.isReply) {
       console.log(props.commentId);
-      const result = store.comments.find((el) => el.id === props.commentId);
-      if (result) {
-        return result.replies.push(newReply);
+      const replyToReply = store.comments.find( el=> el.replies.find(la=>la.id===props.commentId) );
+      if (replyToReply) {
+        return replyToReply.replies.push(newReply);
+      }
+      if(!replyToReply){
+            const replyToComment = store.comments.find((el) => el.id === props.commentId);
+      if (replyToComment) {
+        return replyToComment.replies.push(newReply);
+      }
       }
     }
   }
