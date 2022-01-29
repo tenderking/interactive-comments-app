@@ -26,10 +26,10 @@ const store = useUser();
 
 /** Props */
 const props = defineProps({
-  replyingTo: { type: String },
+  replyingTo: { type: String,default:"" },
   isReply: { type: Boolean, default: false },
-  commentId: { type: Number },
-  closeReply: { type: Function},
+  commentId: { type: Number, required:true,defaul:0 },
+  closeReply: { type: Function,required:true,default:false},
 });
 
 /** Sending Message Functionality */
