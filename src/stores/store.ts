@@ -44,7 +44,13 @@ export const useUser = defineStore({
 			});
 		},
 
-		getNewId() {},
+		getNewId() {
+			function randomNumber(min:number, max:number) { 
+				return Math.floor(Math.random() * (max - min) + min);
+			} 
+			const result=randomNumber(10,100)
+			return result;
+		},
 
 		upvote(id: number) {},
 
