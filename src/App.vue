@@ -1,28 +1,53 @@
 <script setup lang="ts">
-import Tag from "./components/atoms/Tag.vue";
-import TextArea from './components/atoms/TextArea.vue'
+	import CommentView from "./components/molecules/CommentView.vue";
+	import { useUser } from "./stores/store";
+	import CommentModal from "./components/molecules/CommentModal.vue";
+	import CommentNew from "./components/molecules/CommentNew.vue";
+
+	const store = useUser();
 </script>
 
 <template>
-  <div class="grid">
-    <div class="container">
-      <h1>Place the component here</h1>
-      <!-- <Tag /> -->
-      <text-area />
-    </div>
-  </div>
+	<div class="grid">
+		<div class="container">
+			<template v-for="comment in store.comments" :key="comment.id">
+				<CommentView :comment="comment" />
+
+				<div
+					style="margin-left: 5rem"
+					v-for="repliedComment in comment.replies"
+					:key="repliedComment.id"
+				>
+					<CommentView :comment="repliedComment" />
+				</div>
+			</template>
+			<CommentNew />
+		</div>
+
+		<CommentModal v-if="store.showModal" />
+	</div>
 </template>
 
 <style lang="scss">
-@import url(./assets/styles/main.scss);
-.grid {
-  display: grid;
-  place-content: center;
-  min-height: 100vh;
-}
+	.grid {
+		display: grid;
+		place-content: center;
+		min-height: 100vh;
+		background-color: var(--neutral-100);
+		padding-block: 5rem;
+	}
 
-.container {
-  padding: 1rem;
-  border: 2px dashed --primary-blue-500;
-}
+	.container {
+		padding: 1rem;
+		border: 2px dashed dodgerblue;
+		max-width: 30rem;
+
+		@media (min-width: 52rem) {
+			max-width: 46rem;
+		}
+
+		> * + * {
+			margin-top: 20px;
+		}
+	}
 </style>

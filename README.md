@@ -1,6 +1,6 @@
 # Frontend Mentor - Interactive comments section solution
 
-This is a solution to the [Interactive comments section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Interactive comments section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -57,35 +57,16 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - CSS Grid
 - Mobile-first workflow
 - [Vue](https://v3.vuejs.org/) - JS library
-
+- Typescript
 - [Sass](https://sass-lang.com/) - For styles
 
+### What I've learned
 
-### What I learned
+While working with this project I learned how to use git and github more proficiently. For the first time I opened issues on github, used project, and branched, as well as solve merge conflicts. We also used a design first approach. My collaborator had created a figma file, showing the app destructured into atoms, molecules and organisms, which means breaking down the app into small individual pieces that can me combined into bigger pieces. This method is very structural and is good for working in teams.
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+As for the coding we used pinia for the first time, and my collaborator used Typescript for the first time. At the time of writing, we have hit a wall. We have a component that takes a loop in a loop that passing props to deep nested children. We both agreed that the approach we are taking has to be revised, and we should use pinia, a vue store to solve our issue. An way to solve our challenge is to normalize the data and use actions from the store to find the id of the comments and replies. Normalizing is a new concept for us, and it's not easy to implement.
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+As it is a third challenge from frontendmentor, I've discovered that projects take longer than anticipated.
 
 ### Continued development
 
