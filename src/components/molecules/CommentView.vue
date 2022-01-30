@@ -31,13 +31,17 @@
 	const toggleShowReply = () => showReply.value = !showReply.value;
 	
 	const closeReply = () => showReply.value = false;
+
+	const checkComment = () => {
+		if (props.comment.replies) store.$patch({ isRepliedComment: false });
+		else store.$patch({ isRepliedComment: true });
+	}
 		
 	const showModal = () => {
 		store.handleModal(true);
 		store.$patch({ idToDelete: props.comment.id });
 
-		if (props.comment.replies) store.$patch({ isRepliedComment: false });
-		else store.$patch({ isRepliedComment: true });
+		checkComment()
 	};
 </script>
 
@@ -55,7 +59,7 @@
 				</p>
 			</div>
 			<div class="comment__score">
-				<LikeButton :score="comment.score" :id="comment.id" />
+				<LikeButton :score="comment.score" :id="comment.id" :checkComment="checkComment" />
 			</div>
 			<div class="comment__actions">
 				<template v-if="isCurrentUser() && !edit">

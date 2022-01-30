@@ -52,9 +52,39 @@ export const useUser = defineStore({
 			return result;
 		},
 
-		upvote(id: number) {},
+		vote(id: number, action: string) {
+			this.$patch((state) => {
+				if (!this.isRepliedComment) {
+					const comment = state.comments.find(comment => comment.id === id)
+					if (comment) {
+						if (action === 'upvote') comment.score++
+						else comment.score--
+					}
+				} else {
+					let comment
+					
+					for (let index in state.comments) {
+						comment = state.comments[+index].replies.find((el) => el.id === id);
 
-		downvote(id: number) {},
+						if (comment) break // If we find the result we stop the loop
+					}
+
+					if (comment) {
+						if (action === 'upvote') comment.score++
+						else {
+							if (comment.score > 0) comment.score--
+						}
+					}
+				}
+			});
+		},
+
+		upvote(id: number) {
+			this.vote(id, 'upvote')
+		},
+		downvote(id: number) {
+			this.vote(id, 'downvote')
+		},
 	},
 });
 if (import.meta.hot) {

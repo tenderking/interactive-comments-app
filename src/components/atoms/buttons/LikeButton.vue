@@ -1,21 +1,28 @@
 <template>
 	<div class="btn-container">
 		<div class="like-btn btn__plus">
-			<p @click="score++" class="btn__text">+</p>
+			<p @click="checkComment(), upvote(id)" class="btn__text">+</p>
 
 			<p class="text">{{ score }}</p>
 
-			<p @click="score--" class="btn__text">-</p>
+			<p @click="checkComment(), downvote(id)" class="btn__text">-</p>
 		</div>
 	</div>
 </template>
-<script setup lang="ts" scoped>
-	defineProps({
-		score: { type: Number, required: true },
-		// id: { type: Number, required: true },
-	});
+
+<script setup lang="ts">
+import { useUser } from '../../../stores/store';
+
+defineProps({
+	score: { type: Number, required: true },
+	id: { type: Number, required: true },
+	checkComment: { type: Function, required: true }
+});
+
+const { upvote, downvote } = useUser()
 </script>
-<style lang="scss">
+
+<style lang="scss" scoped>
 	.like-btn {
 		display: flex;
 		flex-direction: row;
