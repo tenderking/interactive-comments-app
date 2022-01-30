@@ -96,7 +96,7 @@ const newReply = () => {
   }
 }
 
-@media (min-width: 35em) {
+@media (min-width: 52em) {
   .comment-container {
     display: grid;
     grid-template-columns: auto 1fr auto;
