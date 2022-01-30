@@ -41,7 +41,6 @@ const newMessage = () => {
     content: newContent.value,
     createdAt: "Just now",
     score: 0,
-    replyingTo: props.replyingTo!,
     user: store.currentUser,
     replies: [],
   };
