@@ -30,7 +30,7 @@
 	};
 	const toggleShowReply = () => showReply.value = !showReply.value;
 	
-	const closeReply =()=>showReply.value=false;
+	const closeReply = () => showReply.value = false;
 		
 	const showModal = () => {
 		store.handleModal(true);
@@ -46,7 +46,7 @@
 		<div class="comment">
 			<div class="comment__user-infos">
 				<UserProfile :isShown="true" :user="comment.user" />
-				<p class="timestamp">1 day ago</p>
+				<p class="timestamp">{{comment.createdAt}}</p>
 			</div>
 			<div class="comment__content">
 				<TextAreaAtom v-if="edit" v-model:content="comment.content" />
@@ -74,8 +74,6 @@
 			:replyingTo="comment.user.username"
 			:isReply="true"
 			:closeReply="closeReply"
-			
-			
 		/>
 	</div>
 </template>
