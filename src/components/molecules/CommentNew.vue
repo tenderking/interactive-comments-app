@@ -85,6 +85,8 @@ const newReply = () => {
   background-color: var(--white);
   padding: 1.5rem;
   border-radius: 0.5rem;
+  align-items: center;
+  row-gap: 1rem;
 
   .text-area {
     grid-column: 1 / span 2;
