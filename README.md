@@ -33,20 +33,15 @@ Users should be able to:
 
 ### Screenshot
 
-![Screenshot](./screenshot.jpg)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+![Screenshot](https://user-images.githubusercontent.com/10375060/151851218-20e543e8-1c15-4c50-84b1-dee8168f759b.png)
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [solution URL](https://github.com/tenderking/interactive-comments-app)
+- Live Site URL: [Live site](https://tenderking.github.io/interactive-comments-app/)
 
 ## My process
 
@@ -62,38 +57,37 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### What I've learned
 
-While working with this project I learned how to use git and github more proficiently. For the first time I opened issues on github, used project, and branched, as well as solve merge conflicts. We also used a design first approach. My collaborator had created a figma file, showing the app destructured into atoms, molecules and organisms, which means breaking down the app into small individual pieces that can me combined into bigger pieces. This method is very structural and is good for working in teams.
+While working with this project I learned how to use git and github more proficiently. We  used issues on github, used project, and branched, as well as solve merge conflicts. We also used a design first approach. We had created a figma file, showing the app destructured into atoms, molecules and organisms, which means breaking down the app into small individual pieces that can me combined into bigger pieces. This method is very structural and is good for working in teams.
 
-As for the coding we used pinia for the first time, and my collaborator used Typescript for the first time. At the time of writing, we have hit a wall. We have a component that takes a loop in a loop that passing props to deep nested children. We both agreed that the approach we are taking has to be revised, and we should use pinia, a vue store to solve our issue. An way to solve our challenge is to normalize the data and use actions from the store to find the id of the comments and replies. Normalizing is a new concept for us, and it's not easy to implement.
+As for the coding we used Typescript and learned using pinia, a state management plugin for vuejs. When we have hit a wall a couple of times, but that's part of the learning process. The trickiest part was a component that takes a loop in a loop and finding the id from  props of a deep nested children. We had to revise our approach. An way to solve our challenge is to normalize the data and use actions from the store to find the id of the comments and replies. Normalizing is a new concept for us, and it's not easy to implement. In the end used pinia, a vue store to solve our issue. 
 
-As it is a third challenge from frontendmentor, I've discovered that projects take longer than anticipated.
+Time wise project took longer than anticipated. 
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+In the future, this project can be a full stack app. 
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+
+
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [v-model](https://frontendmentor.slack.com/archives/D02UXHD2C9E/p1643141504029700) - This helped for solving the typing in the textarea. I really liked this pattern and will use it going forward.
+- [complex objects](https://forum.vuejs.org/t/vuex-best-practices-for-complex-objects/10143/2) - This is an amazing forum which helped me understand that nested elements are a pain, and there's a good way to do it. Even though we didn't Use it, I'd recommend it to anyone still learning this concept.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Frontend Mentor - [@tenderking](https://www.frontendmentor.io/profile/tenderking)
+- Frontend Mentor -  [@P4P1-ND](https://www.frontendmentor.io/profile/P4P1-ND)
+
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+This project was a teamwork effort by https://github.com/P4P1-ND and https://github.com/tenderking. It was pleasure working together and we learned a lot from each other.
 
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+
 
 ## Vue 3 + Typescript + Vite
 
