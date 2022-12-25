@@ -6,11 +6,11 @@
       :user="store.currentUser"
       class="user-profile"
     />
-    <PrimaryButton
-      class="btn"
-      @click="isReply ? (newMessage(), props.closeReply()) : newMessage()"
-    >
-      {{ isReply ? "Reply" : "Send" }}
+    <PrimaryButton v-if="isReply" class="btn" @click="newReply(), closeReply()">
+      Reply
+    </PrimaryButton>
+    <PrimaryButton v-else class="btn" @click="newMessage">
+      Send
     </PrimaryButton>
   </div>
 </template>
@@ -29,7 +29,7 @@ const props = defineProps({
   replyingTo: { type: String,required:false,default:""},
   isReply: { type: Boolean, default: false },
   commentId: { type: Number, required:false,defaul:0 },
-  closeReply: { type: Function,required:false,default:false},
+  closeReply: { type: Function,required:false, default: null},
 });
 
 /** Sending Message Functionality */
@@ -41,11 +41,17 @@ const newMessage = () => {
     content: newContent.value,
     createdAt: "Just now",
     score: 0,
-    replyingTo: props.replyingTo!,
     user: store.currentUser,
     replies: [],
   };
 
+  if (newContent.value) {
+    store.comments.push(newComment);
+    newContent.value = ''
+  }
+};
+
+const newReply = () => {
   const newReply = {
     id: store.getNewId(),
     content: newContent.value,
@@ -53,29 +59,23 @@ const newMessage = () => {
     score: 0,
     replyingTo: props.replyingTo!,
     user: store.currentUser,
-   
   };
 
   if (newContent.value) {
-    if (!props.isReply) store.comments.push(newComment);
-
-    if (props.isReply) {
-      console.log(props.commentId);
-      const replyToReply = store.comments.find( el=> el.replies.find(la=>la.id===props.commentId) );
-      if (replyToReply) {
-        return replyToReply.replies.push(newReply);
-      }
-      if(!replyToReply){
-            const replyToComment = store.comments.find((el) => el.id === props.commentId);
+  //  console.log(props.commentId);
+    const replyToReply = store.comments.find( el=> el.replies.find(la => la.id === props.commentId));
+      
+    if (replyToReply) {
+      return replyToReply.replies.push(newReply);
+    } else {
+      const replyToComment = store.comments.find((el) => el.id === props.commentId);
+    
       if (replyToComment) {
         return replyToComment.replies.push(newReply);
       }
-      }
     }
   }
-};
-
-
+}
 </script>
 <style lang="scss">
 .comment-container {
@@ -85,6 +85,8 @@ const newMessage = () => {
   background-color: var(--white);
   padding: 1.5rem;
   border-radius: 0.5rem;
+  align-items: center;
+  row-gap: 1rem;
 
   .text-area {
     grid-column: 1 / span 2;
@@ -96,7 +98,7 @@ const newMessage = () => {
   }
 }
 
-@media (min-width: 35em) {
+@media (min-width: 52em) {
   .comment-container {
     display: grid;
     grid-template-columns: auto 1fr auto;

@@ -30,14 +30,18 @@
 	};
 	const toggleShowReply = () => showReply.value = !showReply.value;
 	
-	const closeReply =()=>showReply.value=false;
+	const closeReply = () => showReply.value = false;
+
+	const checkComment = () => {
+		if (props.comment.replies) store.$patch({ isRepliedComment: false });
+		else store.$patch({ isRepliedComment: true });
+	}
 		
 	const showModal = () => {
 		store.handleModal(true);
 		store.$patch({ idToDelete: props.comment.id });
 
-		if (props.comment.replies) store.$patch({ isRepliedComment: false });
-		else store.$patch({ isRepliedComment: true });
+		checkComment()
 	};
 </script>
 
@@ -46,7 +50,7 @@
 		<div class="comment">
 			<div class="comment__user-infos">
 				<UserProfile :isShown="true" :user="comment.user" />
-				<p class="timestamp">1 day ago</p>
+				<p class="timestamp">{{comment.createdAt}}</p>
 			</div>
 			<div class="comment__content">
 				<TextAreaAtom v-if="edit" v-model:content="comment.content" />
@@ -55,7 +59,7 @@
 				</p>
 			</div>
 			<div class="comment__score">
-				<LikeButton :score="comment.score" :id="comment.id" />
+				<LikeButton :score="comment.score" :id="comment.id" :checkComment="checkComment" />
 			</div>
 			<div class="comment__actions">
 				<template v-if="isCurrentUser() && !edit">
@@ -74,8 +78,6 @@
 			:replyingTo="comment.user.username"
 			:isReply="true"
 			:closeReply="closeReply"
-			
-			
 		/>
 	</div>
 </template>
